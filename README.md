@@ -11,3 +11,20 @@ The latter should allow for cross-platform execution on Linux or macOS systems w
 * If running Linux, or macOS with .NET Core 2.0 installed:
     1. `cd wordbook.net.core.2.0`
     2. `dotnet run`
+
+## Approach
+
+My approach is two-step. First, scan the dictionary to build the graph of direct friendships. Then, to find the size of the social network for a given word, traverse the graph and count the extended friend network.
+
+### First Pass
+
+Four data structures are populated during the first pass:
+
+*	`string[] words`
+*	`Dictionary<string, int> lineLookup`
+*	`DictionarySet<int, int> byLength`
+*	`DictionarySet<int, int> friends`
+
+1.	Read dictionary file as `string[]`
+2.	Iterate lines
+	1. 
