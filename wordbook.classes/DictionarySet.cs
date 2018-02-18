@@ -26,6 +26,18 @@ namespace wordbook
             return dictionary.TryGetValue(key, out values);
         }
 
+        /// <summary>
+        /// Adds <paramref name="val"/> to the HashSet for <paramref name="key"/>. 
+        /// Returns bool indicating whether item was added (won't be added if already present)
+        /// </summary>
+        /// <param name="key">Key to add to</param>
+        /// <param name="val">Value to add</param>
+        /// <returns>true if added, false if already present</returns>
+        public bool Add(K key, V val)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

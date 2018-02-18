@@ -18,7 +18,18 @@ namespace wordbook.tests
         {
             DictionarySet<int, int> dictionarySet = new DictionarySet<int, int>();
             HashSet<int> hashSet;
+            // HashSet should not exist in empty DictionarySet
             Assert.AreEqual(false, dictionarySet.TryGetValues(FOO, out hashSet));
+        }
+
+        [TestMethod]
+        public void TestDictionarySetAdd()
+        {
+            DictionarySet<int, int> dictionarySet = new DictionarySet<int, int>();
+            // on first add, value should not exist
+            Assert.AreEqual(true, dictionarySet.Add(FOO, BAR));
+            // on second add, value should exist
+            Assert.AreEqual(false, dictionarySet.Add(FOO, BAR));
         }
     }
 }
