@@ -7,10 +7,46 @@ namespace wordbook.tests
     [TestClass]
     public class WordbookTests
     {
+        #region Dictionaries
+
         [TestMethod]
         public void TestDictionariesGetSmall()
         {
-            Dictionaries.GetDictionary(Dictionaries.Keys.very_small_test_dictionary);
+            TestDictionary(Dictionaries.Keys.very_small_test_dictionary, 12);
         }
+
+        [TestMethod]
+        public void TestDictionariesGetEight()
+        {
+            TestDictionary(Dictionaries.Keys.eight_dictionary, 22339);
+        }
+
+        [TestMethod]
+        public void TestDictionariesGetQuarter()
+        {
+            TestDictionary(Dictionaries.Keys.quarter_dictionary, 44674);
+        }
+
+        [TestMethod]
+        public void TestDictionariesGetHalf()
+        {
+            TestDictionary(Dictionaries.Keys.half_dictionary, 89346);
+        }
+
+        [TestMethod]
+        public void TestDictionariesGetFull()
+        {
+            TestDictionary(Dictionaries.Keys.dictionary, 178692);
+        }
+
+        private void TestDictionary(Dictionaries.Keys key, int expectedLength)
+        {
+            var dict = Dictionaries.GetDictionary(key);
+            Assert.IsNotNull(dict);
+            Assert.IsInstanceOfType(dict, typeof(string[]));
+            Assert.AreEqual(expectedLength, dict.Length);
+        }
+
+        #endregion
     }
 }
