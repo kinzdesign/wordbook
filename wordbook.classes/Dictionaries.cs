@@ -25,7 +25,20 @@ namespace wordbook
         /// <returns>An array containing the lines of the dictionary file</returns>
         public static string[] GetDictionary(Keys key)
         {
-            throw new NotImplementedException();
+            // generate resouce name
+            string resourceName = String.Format("wordbook.dictionaries.{0}.txt", key);
+            // reflect into assembly to get stream to dictionary
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                // temporary list to hold lines
+                List<string> lines = new List<string>();
+                // read each line into lines
+                while (!reader.EndOfStream)
+                    lines.Add(reader.ReadLine());
+                // return list as array
+                return lines.ToArray();
+            }
         }
     }
 }
