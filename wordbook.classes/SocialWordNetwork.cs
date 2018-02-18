@@ -11,6 +11,15 @@ namespace wordbook
 
         public Dictionaries.Keys Key { get; private set; }
 
+        private string[] _words;
+        public string[] Words
+        {
+            get
+            {
+                return _words;
+            }
+        }
+
         #endregion
 
         #region constructors

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace wordbook.tests
 {
@@ -19,7 +20,11 @@ namespace wordbook.tests
         {
             SocialWordNetwork network = new SocialWordNetwork(key);
             // check keys match
-            Assert.AreEqual(key, network.Key, string.Format("Key mismatch on creating SocialWordNetwork. Expected {0}, got {1}.", key, network.Key));
+            Assert.AreEqual(key, network.Key, String.Format("Key mismatch on creating SocialWordNetwork. Expected {0}, got {1}.", key, network.Key));
+            // check word count
+            int expectedWords = DictionariesTests.GetExpectedLength(key);
+            int actualWords = network.Words.Length;
+            Assert.AreEqual(expectedWords, actualWords, String.Format("Word count mismatch for dictionary '{0}'. Expected {1}, got {2}.", key, expectedWords, actualWords));
         }
     }
 }
