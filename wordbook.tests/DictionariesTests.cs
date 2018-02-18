@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace wordbook.tests
 {
     [TestClass]
-    public class WordbookTests
+    public class DictionariesTests
     {
         #region Dictionaries
 
