@@ -7,6 +7,20 @@ namespace wordbook
 {
     public class SocialWordNetwork
     {
+        #region instance variables
+
+        public Dictionaries.Keys Key { get; private set; }
+
+        #endregion
+
+        #region constructors
+
+        public SocialWordNetwork(Dictionaries.Keys key)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
     }
 }
