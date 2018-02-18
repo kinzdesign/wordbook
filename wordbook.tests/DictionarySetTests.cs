@@ -31,5 +31,27 @@ namespace wordbook.tests
             // on second add, value should exist
             Assert.AreEqual(false, dictionarySet.Add(FOO, BAR));
         }
+
+        [TestMethod]
+        public void TestDictionarySetContainKeys()
+        {
+            DictionarySet<int, int> dictionarySet = new DictionarySet<int, int>();
+            // check that keys do not exist in empty DictionarySet
+            Assert.AreEqual(false, dictionarySet.ConatinsKey(FOO));
+            Assert.AreEqual(false, dictionarySet.ConatinsKey(BAR));
+
+            // add key/value pair, ensure it did not exist before
+            Assert.AreEqual(true, dictionarySet.Add(FOO, BAR));
+            // check that key exists
+            Assert.AreEqual(true, dictionarySet.ConatinsKey(FOO));
+            
+            // check that wrong key does not exist
+            Assert.AreEqual(false, dictionarySet.ConatinsKey(BAR));
+
+            // add inverse key/value pair, ensure it did not exist before
+            Assert.AreEqual(true, dictionarySet.Add(BAR, FOO));
+            // check that inverse key now exists
+            Assert.AreEqual(true, dictionarySet.ConatinsKey(BAR));
+        }
     }
 }

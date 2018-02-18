@@ -45,6 +45,16 @@ namespace wordbook
             return set.Add(val);
         }
 
+        /// <summary>
+        /// Checks whether there is a HashSet for the given <paramref name="key"/>
+        /// </summary>
+        /// <param name="key">Key to search for</param>
+        /// <returns>Whther the HashSet exists</returns>
+        public bool ConatinsKey(K key)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
