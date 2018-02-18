@@ -23,7 +23,7 @@ namespace wordbook
         /// <returns>True if <paramref name="key"/> was found and <paramref name="values"/> is populated; false otherwise</returns>
         public bool TryGetValues(K key, out HashSet<V> values)
         {
-            throw new NotImplementedException();
+            return dictionary.TryGetValue(key, out values);
         }
 
         #endregion
