@@ -23,6 +23,15 @@ namespace wordbook
             }
         }
 
+        private DictionarySet<int, int> _friendships;
+        public DictionarySet<int, int> Friendships
+        {
+            get
+            {
+                return _friendships;
+            }
+        }
+
         #endregion
 
         #region constructors
