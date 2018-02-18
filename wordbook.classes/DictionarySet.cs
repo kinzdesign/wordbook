@@ -35,7 +35,14 @@ namespace wordbook
         /// <returns>true if added, false if already present</returns>
         public bool Add(K key, V val)
         {
-            throw new NotImplementedException();
+            HashSet<V> set;
+            // if bin for key does not exist, initialize it and add to dictionary
+            if(!TryGetValues(key, out set))
+            {
+                set = new HashSet<V>();
+                dictionary.Add(key, set);
+            }
+            return set.Add(val);
         }
 
         #endregion
