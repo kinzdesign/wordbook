@@ -8,8 +8,9 @@ namespace wordbook.tests
     public class WordbookTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestDictionariesGetSmall()
         {
+            Dictionaries.GetDictionary(Dictionaries.Keys.very_small_test_dictionary);
         }
     }
 }

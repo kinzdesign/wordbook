@@ -10,7 +10,7 @@ namespace wordbook
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Dictionaries.GetDictionary(Dictionaries.Keys.very_small_test_dictionary);
             Console.ReadKey();
         }
     }
