@@ -61,13 +61,16 @@ namespace wordbook.tests
             // add key/value pair, ensure it did not exist before
             Assert.AreEqual(true, dictionarySet.Add(FOO, BAR), "FOO/BAR existed when adding to empty DictionarySet");
             // ensure key/value pair exists
-            Assert.AreEqual(true, dictionarySet.ContainsValue(FOO, BAR), "FOO/BAR did not exist after being added to DictionarySet");
+            Assert.AreEqual(true, dictionarySet.ContainsValue(FOO, BAR), "FOO/BAR did not exist after being added to DictionarySet (function)");
+            Assert.AreEqual(true, dictionarySet[FOO, BAR], "FOO/BAR did not exist after being added to DictionarySet (getter)");
             // ensure inverse pair doesn't exist
-            Assert.AreEqual(false, dictionarySet.ContainsValue(BAR, FOO), "BAR/FOO existed before being added to DictionarySet");
+            Assert.AreEqual(false, dictionarySet.ContainsValue(BAR, FOO), "BAR/FOO existed before being added to DictionarySet (function)");
+            Assert.AreEqual(false, dictionarySet[BAR, FOO], "BAR/FOO existed before being added to DictionarySet (getter)");
             // add inverse key/value pair, ensure it did not exist before
             Assert.AreEqual(true, dictionarySet.Add(BAR, FOO), "BAR/FOO existed upon first add to DictionaryList");
             // ensure inverse pair now exists
-            Assert.AreEqual(true, dictionarySet.ContainsValue(BAR, FOO), "BAR/FOO did not exist after being added to DictionaryList");
+            Assert.AreEqual(true, dictionarySet.ContainsValue(BAR, FOO), "BAR/FOO did not exist after being added to DictionaryList (function)");
+            Assert.AreEqual(true, dictionarySet[BAR, FOO], "BAR/FOO did not exist after being added to DictionaryList (getter)");
         }
 
     }

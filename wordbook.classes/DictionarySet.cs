@@ -72,5 +72,25 @@ namespace wordbook
         }
 
         #endregion
+
+        #region public accessors
+
+        /// <summary>
+        /// Checks whether <paramref name="val"/> is present in the HashSet for <paramref name="bin"/>
+        /// </summary>
+        /// <param name="key">Key to search for</param>
+        /// <param name="val">Value to search for</param>
+        /// <returns>True if HasSet exists for <paramref name="key"/> and it contains <paramref name="val"/>. Otherwise, false.</returns>
+        public bool this[K key, V val]
+        {
+            get
+            {
+                return ContainsValue(key, val);
+            }
+        }
+
+        #endregion
+
+
     }
 }
