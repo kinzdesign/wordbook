@@ -52,7 +52,7 @@ namespace wordbook
         /// <returns>Whther the HashSet exists</returns>
         public bool ConatinsKey(K key)
         {
-            throw new NotImplementedException();
+            return dictionary.ContainsKey(key);
         }
 
         #endregion
