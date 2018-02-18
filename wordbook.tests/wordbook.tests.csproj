@@ -51,6 +51,7 @@
     <Compile Include="DictionariesTests.cs" />
     <Compile Include="DictionarySetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialWordNetworkTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
