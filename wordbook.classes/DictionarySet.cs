@@ -63,7 +63,12 @@ namespace wordbook
         /// <returns>True if HasSet exists for <paramref name="key"/> and it contains <paramref name="val"/>. Otherwise, false.</returns>
         public bool ContainsValue(K key, V val)
         {
-            throw new NotImplementedException();
+            HashSet<V> set;
+            // if bin for key does not exist, can't contain value
+            if (!TryGetValues(key, out set))
+                return false;
+            // return whether exists in set
+            return set.Contains(val);
         }
 
         #endregion
