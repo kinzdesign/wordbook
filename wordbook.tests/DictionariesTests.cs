@@ -1,14 +1,11 @@
-﻿using wordbook;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace wordbook.tests
 {
     [TestClass]
     public class DictionariesTests
     {
-        #region Dictionaries
-
         [TestMethod]
         public void TestDictionariesGetSmall()
         {
@@ -46,7 +43,5 @@ namespace wordbook.tests
             Assert.IsInstanceOfType(dict, typeof(string[]), String.Format("Dictionary {0} is not a string array", key));
             Assert.AreEqual(expectedLength, dict.Length, String.Format("Dictionary {0} has wrong length. Expected {1}, is {2}.", key, expectedLength, dict.Length));
         }
-
-        #endregion
     }
 }
