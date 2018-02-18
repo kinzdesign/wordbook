@@ -20,6 +20,10 @@ namespace wordbook.tests
             HashSet<int> hashSet;
             // HashSet should not exist in empty DictionarySet
             Assert.AreEqual(false, dictionarySet.TryGetValues(FOO, out hashSet), "Got HashSet for FOO in empty DictionarySet");
+            // on first add, value should not exist
+            Assert.AreEqual(true, dictionarySet.Add(FOO, BAR), "FOO/BAR existed upon adding to empty DictionarySet");
+            // HashSet should exist now
+            Assert.AreEqual(true, dictionarySet.TryGetValues(FOO, out hashSet), "Didn't get HashSet for FOO in DictionarySet after adding FOO/BAR");
         }
 
         [TestMethod]
