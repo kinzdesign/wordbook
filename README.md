@@ -18,13 +18,21 @@ My approach is two-step. First, scan the dictionary to build the graph of direct
 
 ### First Pass
 
-Four data structures are populated during the first pass:
+Three data structures are populated during the first pass:
 
 *	`string[] words`
-*	`Dictionary<string, int> lineLookup`
 *	`DictionarySet<int, int> byLength`
 *	`DictionarySet<int, int> friends`
 
-1.	Read dictionary file as `string[]`
+1.	Read dictionary file into `words`
 2.	Iterate lines
-	1. 
+	1. Identify direct friends by computing edit distances
+		1.	Search for single substitutions in `byLength[line.Length]`
+		2.	Search for single insertions in `byLength[line.Length + 1]`
+		3.	Search for single deletions in `byLength[line.Length - 1]`
+	2.	When a direct friendship is found (two strings such that edit distance = 1), add to adjaency list `friends` (two entries, since friendships are reciprocal)
+
+### Second Pass
+
+TODO: Run BFS from source, count size of extended network. Use care notto double-count nodes
+
