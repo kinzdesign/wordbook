@@ -43,5 +43,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dictionaries\dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\eight_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\half_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\quarter_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\very_small_test_dictionary.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
