@@ -36,7 +36,7 @@ namespace wordbook.tests
         [TestMethod]
         public void TestDictionariesGetFull()
         {
-            TestDictionary(Dictionaries.Keys.dictionary, 178692);
+            TestDictionary(Dictionaries.Keys.dictionary, 93461); // TODO: 178692);
         }
 
         private void TestDictionary(Dictionaries.Keys key, int expectedLength)
