@@ -53,5 +53,22 @@ namespace wordbook.tests
             // check that inverse key now exists
             Assert.AreEqual(true, dictionarySet.ConatinsKey(BAR));
         }
+
+        [TestMethod]
+        public void TestDictionarySetContainsValue()
+        {
+            DictionarySet<int, int> dictionarySet = new DictionarySet<int, int>();
+            // add key/value pair, ensure it did not exist before
+            Assert.AreEqual(true, dictionarySet.Add(FOO, BAR));
+            // ensure key/value pair exists
+            Assert.AreEqual(true, dictionarySet.ContainsValue(FOO, BAR));
+            // ensure inverse pair doesn't exist
+            Assert.AreEqual(false, dictionarySet.ContainsValue(BAR, FOO));
+            // add inverse key/value pair, ensure it did not exist before
+            Assert.AreEqual(true, dictionarySet.Add(BAR, FOO));
+            // ensure inverse pair now exists
+            Assert.AreEqual(true, dictionarySet.ContainsValue(BAR, FOO));
+        }
+
     }
 }

@@ -55,6 +55,17 @@ namespace wordbook
             return dictionary.ContainsKey(key);
         }
 
+        /// <summary>
+        /// Checks whether <paramref name="val"/> is present in the HashSet for <paramref name="bin"/>
+        /// </summary>
+        /// <param name="key">Key of bin to look in</param>
+        /// <param name="val">Value to check for containment</param>
+        /// <returns>True if HasSet exists for <paramref name="key"/> and it contains <paramref name="val"/>. Otherwise, false.</returns>
+        public bool ContainsValue(K key, V val)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
