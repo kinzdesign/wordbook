@@ -17,7 +17,8 @@ namespace wordbook
 
         public SocialWordNetwork(Dictionaries.Keys key)
         {
-            throw new NotImplementedException();
+            // record the key
+            Key = key;
         }
 
         #endregion
