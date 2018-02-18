@@ -16,6 +16,9 @@ namespace wordbook
         {
             get
             {
+                // lazy-load dictionary on first use
+                if (_words == null)
+                    _words = Dictionaries.Get(Key);
                 return _words;
             }
         }
