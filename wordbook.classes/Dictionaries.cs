@@ -23,7 +23,7 @@ namespace wordbook
         /// </summary>
         /// <param name="key">The dictionary key (filename without extension)</param>
         /// <returns>An array containing the lines of the dictionary file</returns>
-        public static string[] GetDictionary(Keys key)
+        public static string[] Get(Keys key)
         {
             // generate resouce name
             string resourceName = String.Format("wordbook.dictionaries.{0}.txt", key);

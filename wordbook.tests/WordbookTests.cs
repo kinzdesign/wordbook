@@ -41,7 +41,7 @@ namespace wordbook.tests
 
         private void TestDictionary(Dictionaries.Keys key, int expectedLength)
         {
-            var dict = Dictionaries.GetDictionary(key);
+            var dict = Dictionaries.Get(key);
             Assert.IsNotNull(dict);
             Assert.IsInstanceOfType(dict, typeof(string[]));
             Assert.AreEqual(expectedLength, dict.Length);

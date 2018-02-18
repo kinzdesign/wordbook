@@ -10,7 +10,11 @@ namespace wordbook
     {
         public static void Main(string[] args)
         {
-            Dictionaries.GetDictionary(Dictionaries.Keys.very_small_test_dictionary);
+            foreach (string word in Dictionaries.Get(Dictionaries.Keys.very_small_test_dictionary))
+                Console.WriteLine(word);
+            Console.WriteLine("--EOF--");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
     }
