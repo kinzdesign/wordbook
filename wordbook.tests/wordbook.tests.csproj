@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DictionariesTests.cs" />
     <Compile Include="DictionarySetTests.cs" />
+    <Compile Include="VerySmallTestDictionaryManualTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocialWordNetworkTests.cs" />
     <Compile Include="TrieNodeTests.cs" />
