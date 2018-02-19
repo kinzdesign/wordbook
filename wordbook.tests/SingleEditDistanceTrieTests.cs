@@ -1,5 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace wordbook.tests
 {
@@ -68,6 +72,87 @@ namespace wordbook.tests
             trie.Add(FOO, 0);
             Assert.AreEqual(true, trie.Contains(FOO), "FOO was not present after adding");
             Assert.AreEqual(false, trie.Contains("FOB"), "FOB was present, but not added");
+        }
+
+        #endregion
+
+        #region GetSingleInsertionPeers
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestGetSingleInsertionPeersNull()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleInsertionPeers(null);
+        }
+
+        [TestMethod]
+        public void TestGetSingleInsertionPeersCorrectLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length + 1);
+            trie.GetSingleInsertionPeers(FOO);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestGetSingleInsertionPeersWrongLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleInsertionPeers(FOO);
+        }
+
+        #endregion
+
+        #region GetSingleDeletionPeers
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestGetSingleDeletionPeersNull()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleDeletionPeers(null);
+        }
+
+        [TestMethod]
+        public void TestGetSingleDeletionPeersCorrectLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length - 1);
+            trie.GetSingleDeletionPeers(FOO);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestGetSingleDeletionPeersWrongLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleDeletionPeers(FOO);
+        }
+
+        #endregion
+
+        #region GetSingleSubstitutionPeers
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestGetSingleSubstitutionPeersNull()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleSubstitutionPeers(null);
+        }
+
+        [TestMethod]
+        public void TestGetSingleSubstitutionPeersCorrectLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
+            trie.GetSingleSubstitutionPeers(FOO);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestGetSingleSubstitutionPeersWrongLength()
+        {
+            SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length - 1);
+            trie.GetSingleSubstitutionPeers(FOO);
         }
 
         #endregion

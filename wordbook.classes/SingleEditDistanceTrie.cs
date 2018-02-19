@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace wordbook
 {
@@ -59,6 +62,38 @@ namespace wordbook
             }
             // if made it this far, word is present
             return true;
+        }
+
+        #endregion
+
+        #region GetSingle[InDelSub]Peers
+
+        public HashSet<int> GetSingleInsertionPeers(string word)
+        {
+            if (word == null)
+                throw new ArgumentNullException("word");
+            if (word.Length != WordLength - 1)
+                throw new ArgumentException("word.Length must be one less than Trie's WordLength");
+            throw new NotImplementedException();
+
+        }
+
+        public HashSet<int> GetSingleDeletionPeers(string word)
+        {
+            if (word == null)
+                throw new ArgumentNullException("word");
+            if (word.Length != WordLength + 1)
+                throw new ArgumentException("word.Length must be one more than Trie's WordLength");
+            throw new NotImplementedException();
+        }
+
+        public HashSet<int> GetSingleSubstitutionPeers(string word)
+        {
+            if (word == null)
+                throw new ArgumentNullException("word");
+            if (word.Length != WordLength)
+                throw new ArgumentException("word.Length must be equal to Trie's WordLength");
+            throw new NotImplementedException();
         }
 
         #endregion
