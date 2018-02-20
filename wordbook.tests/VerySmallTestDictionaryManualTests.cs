@@ -13,16 +13,30 @@ namespace wordbook.tests
         public void RunVerySmallDictionaryTests()
         {
             // create network
-            // SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
+             SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
 
-            // TestFriendshipCount(network, 12);
+            TestFriendships(network);
         }
 
-        private void TestFriendshipCount(SocialWordNetwork network, int expectedCount)
+        private void TestFriendships(SocialWordNetwork network)
         {
             // check friendships count
-            int actualCount = network.Friendships?.ValueCount ?? 0;
-            Assert.AreEqual(expectedCount, actualCount, "Friendship count mismatch");
+            Assert.AreEqual(12, network.Friendships.ValueCount, "Friendship count mismatch");
+
+            // check actual friendships
+            CheckFriendship(network, 0,  1);
+            CheckFriendship(network, 1,  2);
+            CheckFriendship(network, 2,  3);
+            CheckFriendship(network, 3, 11);
+            CheckFriendship(network, 5,  8);
+            CheckFriendship(network, 9, 10);
+        }
+
+        private void CheckFriendship(SocialWordNetwork network, int a, int b)
+        {
+            string valA = network.Words[a];
+            string valB = network.Words[b];
+            Assert.IsTrue(network.Friendships[a, b], string.Format("{0} ({1}) should be friends with {2} ({3})", a, valA, b, valB));
         }
 
         private SingleEditDistanceTrie GetFiveCharTrie()
