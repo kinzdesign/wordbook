@@ -131,5 +131,55 @@ namespace wordbook
         }
 
         #endregion
+
+        #region extended network
+
+        public int[] GetExtendedNetwork(string word)
+        {
+            // search for word in Words array
+            int wordId = Array.BinarySearch(Words, word);
+            // if not found in Words, it has no social network
+            if (wordId < 0)
+                return new int[] { };
+            return GetExtendedNetwork(wordId);
+        }
+
+        public int[] GetExtendedNetwork(int wordId)
+        {
+            // create processing queue for BFS
+            Queue<int> queue = new Queue<int>();
+            // create set to hold social network
+            HashSet<int> extendedNetwork = new HashSet<int>();
+            // placeholder for temporary peer lists
+            HashSet<int> tmpPeers;
+            // enqueue self
+            queue.Enqueue(wordId);
+            // iterate until queue is exhausted
+            while (queue.Count > 0)
+            {
+                // get next word to process
+                wordId = queue.Dequeue();
+                // add to extended network
+                extendedNetwork.Add(wordId);
+                // get friends of this word
+                if (Friendships.TryGetValues(wordId, out tmpPeers))
+                {
+                    // iterate friends of this word
+                    foreach (int peer in tmpPeers)
+                    {
+                        // if not yet in extended network
+                        if (!extendedNetwork.Contains(peer))
+                        {
+                            // enqueue
+                            queue.Enqueue(peer);
+                        }
+                    }
+                }
+            }
+            // return network as array
+            return extendedNetwork.ToArray();
+        }
+
+        #endregion
     }
 }

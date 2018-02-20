@@ -16,6 +16,7 @@ namespace wordbook.tests
              SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
 
             TestFriendships(network);
+            TestNetworkSize(network);
         }
 
         private void TestFriendships(SocialWordNetwork network)
@@ -37,6 +38,27 @@ namespace wordbook.tests
             string valA = network.Words[a];
             string valB = network.Words[b];
             Assert.IsTrue(network.Friendships[a, b], string.Format("{0} ({1}) should be friends with {2} ({3})", a, valA, b, valB));
+        }
+
+        private void TestNetworkSize(SocialWordNetwork network)
+        {
+            TestNetworkSize(network,  0, 5); // FIST     { 0, 1, 2, 3, 11 }
+            TestNetworkSize(network,  1, 5); // FISTS    { 0, 1, 2, 3, 11 }
+            TestNetworkSize(network,  2, 5); // LISTS    { 0, 1, 2, 3, 11 }
+            TestNetworkSize(network,  3, 5); // LISTY    { 0, 1, 2, 3, 11 }
+            TestNetworkSize(network,  4, 1); // LIT      { 4 }
+            TestNetworkSize(network,  5, 2); // LITAI    { 5, 8 }
+            TestNetworkSize(network,  6, 1); // LITANIES { 6 }
+            TestNetworkSize(network,  7, 1); // LITANY   { 7 }
+            TestNetworkSize(network,  8, 2); // LITAS    { 5, 8 }
+            TestNetworkSize(network,  9, 2); // LITCHI   { 9, 10 }
+            TestNetworkSize(network, 10, 2); // LITCHIS  { 9, 10 }
+            TestNetworkSize(network, 11, 5); // LUSTY    { 0, 1, 2, 3, 11 }
+        }
+
+        private void TestNetworkSize(SocialWordNetwork network, int wordId, int expectedSize)
+        {
+            Assert.AreEqual(expectedSize, network.GetExtendedNetwork(wordId)?.Length ?? 0, "Incorrect extended network size for " + network.Words[wordId]);
         }
 
         private SingleEditDistanceTrie GetFiveCharTrie()

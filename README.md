@@ -51,5 +51,13 @@ Three data structures are populated during the first pass:
 
 ### Second Pass
 
-TODO: Run BFS from source, count size of extended network. Use care notto double-count nodes
+The second pass completes a breadth-first search in `Friendships` beginning from the query word
 
+1.	Lookup the line number of the word being searched for
+2.	Add this line number to a queue
+3.	While the queue has items:
+	1.	Dequeue an item
+	2.	Add it to the extended network
+	3.	For each of its single-edit peers:
+		1.	If peer is not already in the extended network:
+			1.	Enqueue the peer to be processed
