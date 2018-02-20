@@ -41,6 +41,30 @@ namespace wordbook.tests
         }
 
         [TestMethod]
+        public void TestInsertionsWithFiveCharTrie()
+        {
+            SingleEditDistanceTrie trie = GetFiveCharTrie();
+            HashSet<int> peers;
+
+            // test insertion at end
+            peers = trie.GetSingleInsertionPeers("FIST");
+            Assert.AreEqual(1, peers.Count, "FIST should have 1 single-insertion peer in the 5-char trie");
+            Assert.IsTrue(peers.Contains(1), "FISTS should be a single-insertion peer of FISTS in the 5-char tree");
+
+            // test insertion at beginning
+            peers = trie.GetSingleInsertionPeers("ISTS");
+            Assert.AreEqual(2, peers.Count, "ISTS should have 2 single-insertion peers in the 5-char trie");
+            Assert.IsTrue(peers.Contains(1), "FISTS should be a single-insertion peer of ISTS in the 5-char tree");
+            Assert.IsTrue(peers.Contains(2), "LISTS should be a single-insertion peer of ISTS in the 5-char tree");
+
+            // test insertion in middle
+            peers = trie.GetSingleInsertionPeers("LSTY");
+            Assert.AreEqual(2, peers.Count, "LSTY should have 2 single-insertion peers in the 5-char trie");
+            Assert.IsTrue(peers.Contains(3), "LISTY should be a single-insertion peer of LSTY in the 5-char tree");
+            Assert.IsTrue(peers.Contains(11), "LUSTY should be a single-insertion peer of LSTY in the 5-char tree");
+        }
+
+        [TestMethod]
         public void TestSubstitutionsWithFiveCharTrie()
         {
             SingleEditDistanceTrie trie = GetFiveCharTrie();

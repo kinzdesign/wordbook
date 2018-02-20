@@ -74,8 +74,57 @@ namespace wordbook
                 throw new ArgumentNullException("word");
             if (word.Length != WordLength - 1)
                 throw new ArgumentException("word.Length must be one less than Trie's WordLength");
-            throw new NotImplementedException();
 
+            // initialize peer list and processing stack
+            HashSet<int> peers = new HashSet<int>();
+            Stack<TraversalState> stack = new Stack<TraversalState>();
+            // push root nodes onto stack
+            foreach (var node in Children.Values)
+                stack.Push(new TraversalState(0, node, false));
+            // process nodes until stack is exhausted
+            while (stack.Count > 0)
+            {
+                // pop next node to process
+                var state = stack.Pop();
+                // check whether match
+                if (state.CharIndex  < word.Length && state.Node.Letter == word[state.CharIndex])
+                {
+                    // if word is finished
+                    if (state.CharIndex + (state.MadeEdit ? 1 : 0) == word.Length)
+                    {
+                        // if edited, add to peers
+                        if (state.MadeEdit && state.Node.WordNumber.HasValue)
+                            peers.Add(state.Node.WordNumber.Value);
+                        // if no edit made, do nothing (edit distace to self is 0)
+                    }
+                    else
+                    {
+                        // push children
+                        foreach (var child in state.Node.Children.Values)
+                            stack.Push(new TraversalState(state.CharIndex + 1, child, state.MadeEdit));
+                    }
+                }
+                // letter mismatch
+                else
+                {
+                    // if mismatch and word is finished
+                    if (state.CharIndex >= word.Length)
+                    {
+                        // if unedited, add to peers (insertion is at end)
+                        if (!state.MadeEdit && state.Node.WordNumber.HasValue)
+                            peers.Add(state.Node.WordNumber.Value);
+                    }
+                    else
+                    {
+                        // if mismatch in middle and no edit made, check next letter
+                        if (!state.MadeEdit)
+                            // if matched, push children
+                            foreach (var child in state.Node.Children.Values)
+                                stack.Push(new TraversalState(state.CharIndex, child, true));
+                    }
+                }
+            }
+            return peers;
         }
 
         public HashSet<int> GetSingleDeletionPeers(string word)
