@@ -12,6 +12,8 @@ The latter should allow for cross-platform execution on Linux or macOS systems w
     1. `cd wordbook.net.core.2.0`
     2. `dotnet run`
 
+Command line arguments can be used to customize the dictionary used, the word searched for, and whether to display the words in the extended network. Run `wordbook /?` or `dotnet run /?` for details.
+
 ## Approach
 
 My approach is two-step. First, scan the dictionary to build the graph of direct friendships. Then, to find the size of the social network for a given word, traverse the graph and count the extended friend network.
