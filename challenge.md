@@ -1,6 +1,3 @@
-Apartment List Coding Challenge
-==========================
-
 Problem
 -------
 
@@ -45,14 +42,3 @@ to test your code on as you are developing a solution. For your final answer, we
 social network for LISTY given the entire 178,692 word dictionary in dictionary.txt.
 
 To help you get started, the size of the social network for LISTY in the very_small_test_dictionary.txt is 5
-
-Submission
-----------
-To submit your solution, please email solutions@apartmentlist.com and include
-the following:
-* the size of the social network for LISTY using the `dictionary.txt` dictionary
-(please include this in the subject of your email)
-* a link to the github repository that contains your solution
-* your resume
-
-Thank you and good luck!
