@@ -40,8 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionaries.cs" />
+    <Compile Include="DictionarySet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialWordNetwork.cs" />
+    <Compile Include="SingleEditDistanceTrie.cs" />
+    <Compile Include="TraversalState.cs" />
+    <Compile Include="TrieNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="dictionaries\dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\eight_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\half_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\quarter_dictionary.txt" />
+    <EmbeddedResource Include="dictionaries\very_small_test_dictionary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
