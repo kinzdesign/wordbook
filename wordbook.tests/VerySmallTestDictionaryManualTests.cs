@@ -65,6 +65,30 @@ namespace wordbook.tests
         }
 
         [TestMethod]
+        public void TestDeletionsWithFiveCharTrie()
+        {
+            SingleEditDistanceTrie trie = GetFiveCharTrie();
+            HashSet<int> peers;
+
+            // test deletion at end
+            peers = trie.GetSingleDeletionPeers("LISTSS");
+            Assert.AreEqual(1, peers.Count, "LISTSS should have 1 single-deletion peer in the 5-char trie");
+            Assert.IsTrue(peers.Contains(2), "LISTS should be a single-deletion peer of LISTSS in the 5-char tree");
+
+            // test deletion at beginning
+            peers = trie.GetSingleDeletionPeers("LIUSTY");
+            Assert.AreEqual(2, peers.Count, "LIUSTY should have 2 single-deletion peers in the 5-char trie");
+            Assert.IsTrue(peers.Contains(3), "LISTY should be a single-deletion peer of LIUSTY in the 5-char tree");
+            Assert.IsTrue(peers.Contains(11), "LUSTY should be a single-deletion peer of LIUSTY in the 5-char tree");
+
+            // test deletion in middle
+            peers = trie.GetSingleDeletionPeers("FLISTS");
+            Assert.AreEqual(2, peers.Count, "FLISTS should have 2 single-deletion peers in the 5-char trie");
+            Assert.IsTrue(peers.Contains(1), "FISTS should be a single-deletion peer of FLISTS in the 5-char tree");
+            Assert.IsTrue(peers.Contains(2), "LISTS should be a single-deletion peer of FLISTS in the 5-char tree");
+        }
+
+        [TestMethod]
         public void TestSubstitutionsWithFiveCharTrie()
         {
             SingleEditDistanceTrie trie = GetFiveCharTrie();
