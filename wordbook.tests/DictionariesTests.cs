@@ -42,7 +42,7 @@ namespace wordbook.tests
             Assert.IsNotNull(dict, String.Format("Dictionary {0} is null", key));
             Assert.IsInstanceOfType(dict, typeof(string[]), String.Format("Dictionary {0} is not a string array", key));
             int expectedLength = GetExpectedLength(key);
-            Assert.AreEqual(expectedLength, dict.Length, String.Format("Dictionary {0} has wrong length. Expected {1}, is {2}.", key, expectedLength, dict.Length));
+            Assert.AreEqual(expectedLength, dict.Length, String.Format("Dictionary {0} has wrong length", key));
         }
 
         internal static int GetExpectedLength(Dictionaries.Keys key)

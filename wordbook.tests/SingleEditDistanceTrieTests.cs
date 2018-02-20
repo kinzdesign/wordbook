@@ -1,9 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace wordbook.tests
 {
@@ -68,10 +64,10 @@ namespace wordbook.tests
         public void TestTrieContains()
         {
             SingleEditDistanceTrie trie = new SingleEditDistanceTrie(FOO.Length);
-            Assert.AreEqual(false, trie.Contains(FOO), "FOO was present before adding");
+            Assert.IsFalse(trie.Contains(FOO), "FOO was present before adding");
             trie.Add(FOO, 0);
-            Assert.AreEqual(true, trie.Contains(FOO), "FOO was not present after adding");
-            Assert.AreEqual(false, trie.Contains("FOB"), "FOB was present, but not added");
+            Assert.IsTrue(trie.Contains(FOO), "FOO was not present after adding");
+            Assert.IsFalse(trie.Contains("FOB"), "FOB was present, but not added");
         }
 
         #endregion
