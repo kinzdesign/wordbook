@@ -50,7 +50,7 @@ namespace wordbook.tests
             switch (key)
             {
                 case Dictionaries.Keys.dictionary:
-                    return 93461; // TODO: 178692
+                    return 178692;
                 case Dictionaries.Keys.eight_dictionary:
                     return 22339;
                 case Dictionaries.Keys.half_dictionary:
