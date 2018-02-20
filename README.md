@@ -6,13 +6,29 @@ The code compiles for both .NET Framework 4.0 and .NET Core 2.0.
 The latter should allow for cross-platform execution on Linux or macOS systems with .NET Core installed.
 
 * If running Windows with .NET Framework 4.0 or greater installed: 
-    1. `cd wordbook.net.4.0\bin\Debug`
+    1. `cd wordbook.net.4.0\bin\Release`
     2. `wordbook.exe`
 * If running Linux, or macOS with .NET Core 2.0 installed:
     1. `cd wordbook.net.core.2.0`
     2. `dotnet run`
 
-Command line arguments can be used to customize the dictionary used, the word searched for, and whether to display the words in the extended network. Run `wordbook /?` or `dotnet run /?` for details.
+### Arguments
+
+Command line arguments can be used to customize the dictionary used, the word searched for, and whether to display the words in the extended network:
+
+    WORDBOOK [/?] [/V] [/D=X] [word]
+      [word]   Specifies word to search for, default is LISTY
+      /V       Verbose mode, lists words in extended network
+      /E       Show elapsed times for subtasks
+      /D=X     Specifies dictionary to search, default is D
+                 D or F - dictionary.txt
+                 H or 2 - half_dictionary.txt
+                 Q or 4 - quarter_dictionary.txt
+                 E or 8 - eight_dictionary.txt
+                 S or T - very_small_test_dictionary.txt
+      /?       Displays this help
+
+Note, '/?' switch does not work with the `dotnet run` command, it gets intercepted by .NET Core.
 
 ## Approach
 
