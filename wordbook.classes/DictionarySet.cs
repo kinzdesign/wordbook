@@ -4,9 +4,14 @@ namespace wordbook
 {
     public class DictionarySet<K, V>
     {
-        #region private variables
+        #region instance variables
 
         private Dictionary<K, HashSet<V>> dictionary = new Dictionary<K, HashSet<V>>();
+
+        /// <summary>
+        /// Gets the sum of the counts of each HashSet.
+        /// </summary>
+        public int ValueCount { get; private set; }
 
         #endregion
 
@@ -39,7 +44,11 @@ namespace wordbook
                 set = new HashSet<V>();
                 dictionary.Add(key, set);
             }
-            return set.Add(val);
+            // if already present, don't increment count
+            if (!set.Add(val))
+                return false;
+            ValueCount++;
+            return true;
         }
 
         /// <summary>
@@ -87,7 +96,6 @@ namespace wordbook
         }
 
         #endregion
-
 
     }
 }

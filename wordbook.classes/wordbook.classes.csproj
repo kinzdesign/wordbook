@@ -44,6 +44,10 @@
     <Compile Include="DictionarySet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialWordNetwork.cs" />
+    <Compile Include="SingleEditDistanceTrie.cs" />
+    <Compile Include="TraversalState.cs" />
+    <Compile Include="TrieNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dictionaries\dictionary.txt" />
