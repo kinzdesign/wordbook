@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace wordbook
 {
@@ -47,6 +46,43 @@ namespace wordbook
             }
         }
 
+        private DateTime? BeganLoadDictionary;
+        private DateTime? EndedLoadDictionary;
+        public TimeSpan? ElapsedLoadDictionary
+        {
+            get
+            {
+                if (BeganLoadDictionary.HasValue && EndedLoadDictionary.HasValue)
+                    return EndedLoadDictionary.Value - BeganLoadDictionary.Value;
+                return null;
+            }
+        }
+
+        private DateTime? BeganBuildNetwork;
+        private DateTime? EndedBuildNetwork;
+        public TimeSpan? ElapsedBuildNetwork
+        {
+            get
+            {
+                if (BeganBuildNetwork.HasValue && EndedBuildNetwork.HasValue)
+                    return EndedBuildNetwork.Value - BeganBuildNetwork.Value;
+                return null;
+            }
+        }
+
+        private DateTime? BeganGetExtendedNetwork;
+        private DateTime? EndedGetExtendedNetwork;
+        public TimeSpan? ElapsedGetExtendedNetwork
+        {
+            get
+            {
+                if (BeganGetExtendedNetwork.HasValue && EndedGetExtendedNetwork.HasValue)
+                    return EndedGetExtendedNetwork.Value - BeganGetExtendedNetwork.Value;
+                return null;
+            }
+        }
+
+
         #endregion
 
         #region constructors
@@ -63,7 +99,9 @@ namespace wordbook
 
         private void LoadDictionary()
         {
+            BeganLoadDictionary = DateTime.Now;
             _words = Dictionaries.Get(Key);
+            EndedLoadDictionary = DateTime.Now;
         }
 
         #endregion
@@ -72,12 +110,14 @@ namespace wordbook
 
         private void BuildNetwork()
         {
+            BeganBuildNetwork = DateTime.Now;
             // instantiate collections
             _triesByLength = new Dictionary<int, SingleEditDistanceTrie>();
             _friendships = new DictionarySet<int, int>();
             // add words
             for (int i = 0; i < Words.Length; i++)
                 AddWord(Words[i], i);
+            EndedBuildNetwork = DateTime.Now;
         }
 
         private void AddWord(string word, int wordNumber)
@@ -145,11 +185,13 @@ namespace wordbook
 
         public int[] GetExtendedNetwork(string word)
         {
+            BeganGetExtendedNetwork = DateTime.Now;
             // search for word in Words array
             int wordId = Array.BinarySearch(Words, word);
             // if not found in Words, it has no social network
             if (wordId < 0)
                 return new int[] { };
+            EndedGetExtendedNetwork = DateTime.Now;
             return GetExtendedNetwork(wordId);
         }
 
