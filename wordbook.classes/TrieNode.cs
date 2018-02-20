@@ -43,5 +43,12 @@ namespace wordbook
             }
             return node;
         }
+
+        public override string ToString()
+        {
+            if(WordNumber.HasValue)
+                return String.Format("{0} (finishes word number {1})", Letter, WordNumber);
+            return Letter.ToString();
+        }
     }
 }
