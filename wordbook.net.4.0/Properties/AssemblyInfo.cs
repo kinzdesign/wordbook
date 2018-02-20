@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("wordbook.net.4.0")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("wordbook")]
+[assembly: AssemblyDescription(".NET Framework 4.0 command line interface")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("wordbook.net.4.0")]
+[assembly: AssemblyCompany("Kinsey Roberts")]
+[assembly: AssemblyProduct("Wordbook - The Social Network For Words")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.6.*")]
+[assembly: AssemblyFileVersion("0.6.0.0")]
