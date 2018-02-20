@@ -18,7 +18,7 @@ namespace wordbook
             {
                 // lazy-load dictionary on first use
                 if (_words == null)
-                    _words = Dictionaries.Get(Key);
+                    LoadDictionary();
                 return _words;
             }
         }
@@ -55,6 +55,15 @@ namespace wordbook
         {
             // record the key
             Key = key;
+        }
+
+        #endregion
+
+        #region load dictionary
+
+        private void LoadDictionary()
+        {
+            _words = Dictionaries.Get(Key);
         }
 
         #endregion
