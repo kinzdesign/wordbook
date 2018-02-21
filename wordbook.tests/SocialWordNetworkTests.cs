@@ -37,5 +37,29 @@ namespace wordbook.tests
             int actualWords = network.Words?.Length ?? 0;
             Assert.AreEqual(expectedWords, actualWords, String.Format("Word count mismatch for dictionary '{0}'", network.Key));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestSearchNull()
+        {
+            SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
+            network.GetExtendedNetwork(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSearchNegaitve()
+        {
+            SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
+            network.GetExtendedNetwork(-1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSearchTooBig()
+        {
+            SocialWordNetwork network = new SocialWordNetwork(Dictionaries.Keys.very_small_test_dictionary);
+            network.GetExtendedNetwork(network.Words.Length);
+        }
     }
 }

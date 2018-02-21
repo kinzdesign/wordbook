@@ -46,6 +46,10 @@ namespace wordbook
             }
         }
 
+        #endregion
+
+        #region elapsed time tracking
+
         private DateTime? BeganLoadDictionary;
         private DateTime? EndedLoadDictionary;
         public TimeSpan? ElapsedLoadDictionary
@@ -185,6 +189,8 @@ namespace wordbook
 
         public int[] GetExtendedNetwork(string word)
         {
+            if (word == null)
+                throw new ArgumentNullException("word");
             BeganGetExtendedNetwork = DateTime.Now;
             // search for word in Words array
             int wordId = Array.BinarySearch(Words, word);
@@ -197,6 +203,9 @@ namespace wordbook
 
         public int[] GetExtendedNetwork(int wordId)
         {
+            // check wordId is valid
+            if (wordId < 0 || wordId >= Words.Length)
+                throw new ArgumentOutOfRangeException("wordId");
             // create processing queue for BFS
             Queue<int> queue = new Queue<int>();
             // create set to hold social network
